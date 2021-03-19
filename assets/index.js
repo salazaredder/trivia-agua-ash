@@ -276,7 +276,7 @@ app.component('component-question', {
                 resp = equals(this.responseList, validResponses) ? 1 : 0;
             }
             resp_val = resp === 1 ? 'correcta' : 'incorrecta';
-            resp_data = this.question.type === 'simple' ? resp : this.responseList
+            resp_data = this.question.type === 'simple' ? this.response : this.responseList
             window.dataLayer.push({
                 'pregunta_nro': this.question.id,
                 'respuesta': resp_val,
