@@ -145,17 +145,21 @@ const RootComponent = {
                     this.approved = true;
                 }
                 resultado = this.approved ? 'aprobado': 'no aprobado';
-                window.dataLayer.push({
-                    'final_trivia': 'yes',
-                    'puntos': this.points,
-                    'aprovado': resultado
+                window.ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'final_trivia',
+                    eventAction: this.points,
+                    eventLabel: resultado
                 });
             }
         },
     },
     created() {
+        window.ga('create', 'UA-192614740-1', 'auto');
+
         setTimeout(() => {
             this.showLoading = false;
+            window.ga('send', 'pageview');
         }, 500);
     }
 }
@@ -268,10 +272,11 @@ app.component('component-question', {
             }
             resp_val = resp === 1 ? 'correcta' : 'incorrecta';
             resp_data = this.question.type === 'simple' ? this.response : this.responseList
-            window.dataLayer.push({
-                'pregunta_nro': this.question.id,
-                'respuesta': resp_val,
-                'seleccionado': resp_data
+            window.ga('send', {
+                hitType: 'event',
+                eventCategory: 'pregunta_'+this.question.id,
+                eventAction: resp_val,
+                eventLabel: resp_data
             });
             this.showCorrect = true;
             setTimeout(() => {
