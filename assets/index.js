@@ -110,7 +110,7 @@ const RootComponent = {
                     },
                     {
                         id: 10,
-                        title: "¿Cuál de estas enfermedades puede causar el agua contaminada?",
+                        title: "¿Cuáles de estas enfermedades puede causar el agua contaminada?",
                         type: "multiple",
                         answers: [
                             {value: 1, text: "Diarrea", valid: true},
@@ -140,9 +140,15 @@ const RootComponent = {
             this.currentPos++;
             if (this.currentPos >= this.trivia.questions.length) {
                 this.showQuestion = false;
-            }
-            if (this.points >= this.approvedRequired) {
-                this.approved = true;
+                if (this.points >= this.approvedRequired) {
+                    this.approved = true;
+                }
+                resultado = this.approved ? 'aprobado': 'no aprobado';
+                window.dataLayer.push({
+                    'final_trivia': 'yes',
+                    'puntos': this.points,
+                    'aprovado': resultado
+                });
             }
         },
     },
@@ -188,7 +194,7 @@ app.component('component-question', {
 <div class="col-12 p-3">
     <div class="d-grid gap-2">
       <button class="btn btn btn-outline-primary btn-lg" type="button" @click="validateResponse()"
-      :disabled="!response">Verificar</button>
+      :disabled="!response || showCorrect">Verificar</button>
     </div>
 </div>
 </div>
@@ -269,6 +275,13 @@ app.component('component-question', {
                 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
                 resp = equals(this.responseList, validResponses) ? 1 : 0;
             }
+            resp_val = resp === 1 ? 'correcta' : 'incorrecta';
+            resp_data = this.question.type === 'simple' ? resp : this.responseList
+            window.dataLayer.push({
+                'pregunta_nro': this.question.id,
+                'respuesta': resp_val,
+                'seleccionado': resp_data
+            });
             this.showCorrect = true;
             setTimeout(() => {
                 if (resp) {
