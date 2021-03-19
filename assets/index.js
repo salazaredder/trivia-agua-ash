@@ -21,7 +21,7 @@ const RootComponent = {
                         type: "simple",
                         answers: [
                             {value: 1, text: "Agua y cambio climático", valid: false},
-                            {value: 2, text: "No dejar a nadie atras", valid: false},
+                            {value: 2, text: "Cada gota cuenta", valid: false},
                             {value: 3, text: "Valoremos el agua", valid: true},
                             {value: 4, text: "Agua para todos", valid: false},
                         ],
@@ -148,14 +148,30 @@ const RootComponent = {
                 window.ga('send', {
                     hitType: 'event',
                     eventCategory: 'final_trivia',
-                    eventAction: this.points,
-                    eventLabel: resultado
+                    eventAction: resultado,
+                    eventLabel: 'Trivia finalizada'
                 });
+                window.ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'resultado_trivia',
+                    eventAction: this.points,
+                    eventLabel: 'Resultado trivia'
+                });
+                window.endTime = new Date();
+                totalTime = window.endTime.getTime() - window.startTime.getTime()
+                window.ga('send', {
+                  hitType: 'timing',
+                  timingCategory: 'Duración trivia',
+                  timingVar: 'duration',
+                  timingValue: totalTime
+                });
+
             }
         },
     },
     created() {
         window.ga('create', 'UA-192614740-1', 'auto');
+        window.startTime = new Date();
 
         setTimeout(() => {
             this.showLoading = false;
@@ -276,7 +292,7 @@ app.component('component-question', {
                 hitType: 'event',
                 eventCategory: 'pregunta_'+this.question.id,
                 eventAction: resp_val,
-                eventLabel: resp_data
+                eventLabel: 'Nro de pregunta'
             });
             this.showCorrect = true;
             setTimeout(() => {
