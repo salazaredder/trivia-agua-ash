@@ -17,7 +17,7 @@ const RootComponent = {
                     },
                     {
                         id: 2,
-                        title: "Cada año el Día Mundial del Agua gira en torno a un lema específico, ¿sabes cuál es el de este año?",
+                        title: "Cada año el Día Mundial del Agua gira en torno a un lema específico. ¿Sabes cuál es el de este año?",
                         type: "simple",
                         answers: [
                             {value: 1, text: "Agua y cambio climático", valid: false},
@@ -28,7 +28,7 @@ const RootComponent = {
                         info: `A raíz del desarrollo económico y del incremento de la población mundial, la agricultura y la industria necesitan cada vez más agua, y para satisfacer la demanda de electricidad, aumenta la utilización de fuentes de 3 energía que hacen uso de grandes volúmenes de agua. El cambio climático, por su parte, hace que los patrones de disponibilidad de agua sean más irregulares y agudiza la contaminación.`
                     },
                     {
-                        id: 3, title: "¿Cuál es el rio más grande de Venezuela?",
+                        id: 3, title: "¿Cuál es el río más grande de Venezuela?",
                         type: "simple",
                         answers: [
                             {value: 1, text: "Orinoco", valid: true},
@@ -36,7 +36,7 @@ const RootComponent = {
                             {value: 3, text: "Guaire", valid: false},
                             {value: 4, text: "Apure", valid: false},
                         ],
-                        info: `El río Orinoco es uno de los ríos más importantes de América del Sur que nace y discurre mayormente por Venezuela y una parte por Colombia. Es el cuarto río sudamericano más largo con 2140 Km de largo.`
+                        info: `El río Orinoco es uno de los ríos más importantes de América del Sur que nace y discurre mayormente por Venezuela y una parte por Colombia. Es el cuarto río sudamericano más largo con 2.140 Km de largo.`
                     },
                     {
                         id: 4,
@@ -59,7 +59,7 @@ const RootComponent = {
                             {value: 3, text: "50 litros", valid: false},
                             {value: 4, text: "100 litros", valid: false},
                         ],
-                        info: `cada minuto que pasa nuestro grifo abierto, gastamos unos 20 litros. Si haces unos sencillos cálculos, verás que son 1400 litros de agua a la semana y 5600 litros al mes por persona, lo cual resulta un dato realmente llamativo. Si reducimos este tiempo de ducha a la mitad, ahorraríamos 100 litros de agua.`
+                        info: `Cada minuto que pasa nuestro grifo abierto, gastamos unos 20 litros. Si haces unos sencillos cálculos, verás que son 1.400 litros de agua a la semana y 5.600 litros al mes por persona, lo cual resulta un dato realmente llamativo. Si reducimos este tiempo de ducha a la mitad, ahorraríamos 100 litros de agua.`
                     },
                     {
                         id: 6, title: "¿Cuántos días puede una persona sobrevivir sin beber agua?",
@@ -76,12 +76,12 @@ const RootComponent = {
                         id: 7, title: "¿Sabes cuántas personas viven sin acceso a agua potable?",
                         type: "simple",
                         answers: [
-                            {value: 1, text: "1500 millones", valid: false},
-                            {value: 2, text: "1000 millones", valid: false},
+                            {value: 1, text: "1.500 millones", valid: false},
+                            {value: 2, text: "1.000 millones", valid: false},
                             {value: 3, text: "800 millones", valid: false},
                             {value: 4, text: "2.200 millones", valid: true},
                         ],
-                        info: `Según las Naciones Unidas, en el mundo hay 2.200 millones de personas que viven sin agua potable en sus hogares y 1 de cada 3 personas viven sin agua potable. Las cifras señalan que cuatro de cada cinco personas que no tienen acceso al agua potable viven en zonas rurales y que 159 millones de personas se ven obligadas a beber agua de superficie, obtenida de fuentes como estanques y arroyos.`
+                        info: `Según las Naciones Unidas, en el mundo hay 2.200 millones de personas que viven sin agua potable en sus hogares, es decir, 1 de cada 3 personas. Las cifras señalan que 4 de cada 5 personas que no tienen acceso al agua potable viven en zonas rurales y que 159 millones de personas se ven obligadas a beber agua de superficie, obtenida de fuentes como estanques y arroyos.`
                     },
                     {
                         id: 8,
@@ -91,7 +91,7 @@ const RootComponent = {
                             {value: 1, text: "20 litros", valid: false},
                             {value: 2, text: "100 litros", valid: false},
                             {value: 3, text: "Menos de 500 litros", valid: false},
-                            {value: 4, text: "Mas de 1000 litros", valid: true},
+                            {value: 4, text: "Mas de 1.000 litros", valid: true},
                         ],
                         info: `Un litro de aceite usado contiene aproximadamente 5.000 veces más carga contaminante que el agua residual que circula por las alcantarillas y redes de saneamiento. Eso de que el agua y el aceite no se mezclan no es así, la grasa provoca atascos en las tuberías y contribuye a la reproducción de bacterias potencialmente nocivas aumentando las plagas urbanas y a la generación de malos olores.`
                     },
@@ -101,7 +101,7 @@ const RootComponent = {
                         type: "multiple",
                         answers: [
                             {value: 1, text: "Hervir", valid: true},
-                            {value: 2, text: "Cloracion", valid: true},
+                            {value: 2, text: "Cloración", valid: true},
                             {value: 3, text: "Sodis", valid: true},
                             {value: 4, text: "Filtro", valid: true},
                             {value: 5, text: "Yodo", valid: true},
@@ -118,13 +118,14 @@ const RootComponent = {
                             {value: 3, text: "Poliomielitis", valid: true},
                             {value: 4, text: "Cólera", valid: true},
                             {value: 5, text: "Hepatitis", valid: true},
-                            {value: 6, text: "Sida", valid: false},
+                            {value: 6, text: "SIDA", valid: false},
                         ],
-                        info: `La falta de agua potable y de saneamiento básico es la principal causa de enfermedades a nivel mundial, 297 000 niños menores de cinco años mueren cada año debido a enfermedades diarreicas causadas por las malas condiciones sanitarias o agua no potable.`
+                        info: `La falta de agua potable y de saneamiento básico es la principal causa de enfermedades a nivel mundial, 297.000 niños menores de 5 años mueren cada año debido a enfermedades diarreicas causadas por las malas condiciones sanitarias o agua no potable.`
                     },
                 ]
             },
             currentPos: 0,
+            intro: true,
             showQuestion: true,
             showLoading: true,
             points: 0,
@@ -175,21 +176,11 @@ app.component('component-question', {
 </div>
 
 <div class="col-12">
-<!--
-<div class="form-check py-3" v-for="(answer,index) in question.answers" @click="response = answer.value"
-:class="getClassStyle(answer)">
-  <input class="form-check-input" :id="index" :type="getType()" :value="answer.value" v-model="response">
-  <label class="form-check-label h5">
-    {{answer.text}}
-  </label>
-</div>
--->
 <ul class="list-group">
   <li class="list-group-item py-3" v-for="(answer,index) in question.answers" @click="selectOption(answer.value)"
   :class="getClassStyle(answer)">{{answer.text}}</li>
 </ul>
 </div>
-
 
 <div class="col-12 p-3">
     <div class="d-grid gap-2">
@@ -288,7 +279,7 @@ app.component('component-question', {
                     Swal.fire({
                         // position: 'top-end',
                         icon: 'success',
-                        title: 'Correcto!',
+                        title: '¡Correcto!',
                         text: this.question.info,
                         showConfirmButton: true,
                         confirmButtonColor: '#ff7602'
@@ -300,7 +291,7 @@ app.component('component-question', {
                     Swal.fire({
                         // position: 'top-end',
                         icon: 'error',
-                        title: 'Ups! incorrecto',
+                        title: '¡Ups! ¡Incorrecto!',
                         text: this.question.info,
                         showConfirmButton: true,
                         confirmButtonColor: '#ff7602'

@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<script>
-  dataLayer = [{
-    'pageCategory': 'trivia',
-    'visitorType': 'visitante'
-  }];
-</script>
+  <script>
+      dataLayer = [{
+          'pageCategory': 'trivia',
+          'visitorType': 'visitante'
+      }];
+  </script>
 
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M744R97');</script>
-<!-- End Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+          'gtm.start':
+              new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-M744R97');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Open Graph data -->
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://salazaredder.github.io/trivia-agua-ash/assets/assets/nrc.png" />
+  <meta property="og:site_name" content="NRC - Trivia" />
+  <meta property="fb:admins" content="Rescata.co" />
+  <meta property="og:title" content="NRC - Trivia del Día mundial del Agua" />
+  <meta property="og:url" content="https://salazaredder.github.io/trivia-agua-ash" />
+  <meta property="og:description" content="Te retamos a participar a este divertido juego para recordar la relevancia de este líquido esencial. ¿Te atreves?" />
+  <meta name="description" content="Te retamos a participar a este divertido juego para recordar la relevancia de este líquido esencial. ¿Te atreves?">
+  <meta name="robots" content="NOODP">
 
   <!--Let browser know website is optimized for mobile-->
   <meta charset="utf-8">
@@ -29,31 +48,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M744R97"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M744R97"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div id="app" class="container">
   <div class="d-flex loading align-content-center" v-if="showLoading">
     <img src="./assets/Eclipse-1s-200px.svg" alt="loading" class="img-fluid align-middle">
   </div>
-  <component-question
-    v-for="(question,index) in trivia.questions"
-    :question="question"
-    :pos="index + 1"
-    :total="trivia.questions.length"
-    v-show="index == currentPos"
-    @update-pos="nextPos($event)"
-  ></component-question>
+  <div class="row" v-if="intro">
+  <div class="col-6 p-3">
+    <img src="./assets/logo_nrc.svg" alt="logo nrc">
+  </div>
+    <div class="col-12 text-center py-3">
+      <div class="display-1 fw-bold text-primary">TRIVIA</div>
+      <p class="mt-4">¿Cuánto sabes sobre el agua?
+        ¿Desde que año se celebra el día internacional del agua?
+        ¿Cuál es el río mas grande de Venezuela?
+        ¿Cuántos litros se gastan en una ducha promedio de 10 minutos?
+      </p>
+      <p>El Día Mundial del Agua se celebra cada 22 de marzo con el objetivo de
+        concientizar acerca de la crisis mundial del agua y la necesidad de
+        buscar medidas para abordarla de manera que alcancemos el
+        Objetivo de Desarrollo Sostenible 6: <i>"Agua y saneamiento para todos antes de 2030"</i>.
+      </p>
+      <p>Te retamos a participar a este divertido juego para recordar la relevancia de este líquido esencial. ¿Te atreves?</p>
+    </div>
+    <div class="col-12 p-3">
+      <div class="d-grid gap-2">
+        <button class="btn btn btn-outline-primary btn-lg" type="button" @click="intro=false">¡Comienza ya!
+        </button>
+      </div>
+    </div>
 
-  <div v-if="!showQuestion && approved">
+  </div>
+
+  <div v-if="showQuestion && !intro">
+    <component-question
+      v-for="(question,index) in trivia.questions"
+      :question="question"
+      :pos="index + 1"
+      :total="trivia.questions.length"
+      v-show="index == currentPos"
+      @update-pos="nextPos($event)"
+    ></component-question>
+  </div>
+
+  <div v-if="!showQuestion ">
     <div class="row">
       <div class="col-6 p-3">
         <img src="./assets/logo_nrc.svg" alt="logo nrc">
       </div>
       <div class="col-12 mt-3 text-center">
         <h3 class="text-primary">{{points}}/10</h3>
-        <h1 class="text-primary">¡Bien hecho!</h1>
+        <h1 class="text-primary" v-if="approved">¡Bien hecho!</h1>
+        <h3 class="text-primary" v-else>Mas suerte para la proxima</h3>
       </div>
       <div class="col-12 mt-5">
         <p class="text-center">MÁS INFORMACIÓN</p>
@@ -69,36 +120,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>
             Portal de datos sobre el ODS 6 de ONU-Agua: <br>
             <a target="_blank" href="https://www.sdg6data.org">www.sdg6data.org</a>
-          </li>
-        </ul>
-        <h2 class="text-primary mt-5 text-center display-1">¡Valoremos el agua!</h2>
-
-      </div>
-    </div>
-  </div>
-  <div v-if="!showQuestion && !approved">
-    <div class="row">
-      <div class="col-6 p-3">
-        <img src="./assets/logo_nrc.svg" alt="logo nrc">
-      </div>
-      <div class="col-12 mt-3 text-center">
-        <h3 class="text-primary">{{points}}/10</h3>
-        <h3 class="text-primary">Mas suerte para la proxima</h3>
-      </div>
-      <div class="col-12 mt-5">
-        <p class="text-center">MÁS INFORMACIÓN</p>
-        <ul>
-          <li>
-            Sitio web del Día Mundial del Agua 2021: <br>
-            <a target="_blank" href="https://www.worldwaterday.org">https://www.worldwaterday.org</a>
-          </li>
-          <li>
-            Informe Mundial de las Naciones Unidas sobre el Desarrollo de los Recursos Hídricos 2021: <br>
-            <a target="_blank" href="www.unwater.org/publication_categories/world-water-development-report">www.unwater.org</a>
-          </li>
-          <li>
-            Portal de datos sobre el ODS 6 de ONU-Agua: <br>
-            <a target="_blank" href="www.sdg6data.org">www.sdg6data.org</a>
           </li>
         </ul>
         <h2 class="text-primary mt-5 text-center display-1">¡Valoremos el agua!</h2>
