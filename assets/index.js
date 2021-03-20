@@ -134,6 +134,10 @@ const RootComponent = {
         }
     },
     methods: {
+        initTrivia(){
+            window.startTime = new Date();
+            this.intro = false;
+        },
         nextPos(result) {
             console.log(`result: ${result}`)
             this.points += result;
@@ -147,15 +151,21 @@ const RootComponent = {
                 resultado = this.approved ? 'aprobado': 'no aprobado';
                 window.ga('send', {
                     hitType: 'event',
-                    eventCategory: 'final_trivia',
+                    eventCategory: 'Resultado',
                     eventAction: resultado,
                     eventLabel: 'Trivia finalizada'
                 });
                 window.ga('send', {
                     hitType: 'event',
-                    eventCategory: 'resultado_trivia',
+                    eventCategory: 'Puntaje',
                     eventAction: this.points,
                     eventLabel: 'Resultado trivia'
+                });
+                window.ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Trivia Completada',
+                    eventAction: 'completada',
+                    eventLabel: 'Trivia Completada'
                 });
                 window.endTime = new Date();
                 totalTime = window.endTime.getTime() - window.startTime.getTime()
@@ -171,7 +181,12 @@ const RootComponent = {
     },
     created() {
         window.ga('create', 'UA-192614740-1', 'auto');
-        window.startTime = new Date();
+        window.ga('send', {
+            hitType: 'event',
+            eventCategory: 'Visitas',
+            eventAction: 'visita',
+            eventLabel: 'Nro de visitas'
+        });
 
         setTimeout(() => {
             this.showLoading = false;

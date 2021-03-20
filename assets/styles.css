@@ -53,3 +53,12 @@
     height: 100vh;
     background: #ffffff;
 }
+
+.container {
+    max-width: 600px;
+}
+
+.list-group-item:hover{
+    color: #ff7602;
+    border-color: #ff7602;
+}
