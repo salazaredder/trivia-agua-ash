@@ -106,11 +106,11 @@ const RootComponent = {
                             {value: 4, text: "Filtro", valid: true},
                             {value: 5, text: "Yodo", valid: true},
                         ],
-                        info: `Las técnicas de potabilización del agua permiten eliminar los microorganismos presentes en el agua sin tratar y que pueden ser dañinos para nuestro organismo, y podemos encontrarlos en forma de pastillas, filtros o luces especiales que acaban con ellos.`
+                        info: `¡Todas son correctas! Las técnicas de potabilización del agua permiten eliminar los microorganismos presentes en el agua sin tratar y que pueden ser dañinos para nuestro organismo, y podemos encontrarlos en forma de pastillas, filtros o luces especiales que acaban con ellos.`
                     },
                     {
                         id: 10,
-                        title: "¿Cuáles de estas enfermedades puede causar el agua contaminada?",
+                        title: "¿Cuáles de estas enfermedades pueden ser causadas por el agua contaminada?",
                         type: "multiple",
                         answers: [
                             {value: 1, text: "Diarrea", valid: true},
